@@ -15,7 +15,7 @@ import { logger } from '../utils/logger.utils.js';
  */
 export const post = async (request, response) => {
   let customerId = undefined;
-
+  logger.info('Da vao customer event create');
   // Check request body
   if (!request.body) {
     logger.error('Missing request body.');
@@ -30,7 +30,8 @@ export const post = async (request, response) => {
 
   // Receive the Pub/Sub message
   const pubSubMessage = request.body.message;
-
+  logger.info('Thong tin customer payload');
+  logger.info(pubSubMessage);
   // For our example we will use the customer id as a var
   // and the query the commercetools sdk with that info
   const decodedData = pubSubMessage.data
